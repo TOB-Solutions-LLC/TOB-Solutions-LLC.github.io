@@ -57,6 +57,45 @@
         .mobile-menu.open {
             max-height: 400px;
         }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+
+            nav {
+                background-color: #2a2a2a !important;
+                border-color: #444 !important;
+            }
+
+            .bg-white {
+                background-color: #2a2a2a !important;
+                color: #e0e0e0;
+            }
+
+            .bg-gray-50 {
+                background-color: #333 !important;
+                color: #e0e0e0;
+            }
+
+            .text-gray-900 {
+                color: #e0e0e0 !important;
+            }
+
+            .text-gray-600 {
+                color: #b0b0b0 !important;
+            }
+
+            .border-gray-200 {
+                border-color: #444 !important;
+            }
+
+            .border-gray-300 {
+                border-color: #555 !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
