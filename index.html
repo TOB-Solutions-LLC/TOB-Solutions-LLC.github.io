@@ -677,10 +677,19 @@
 
                     } catch (error) {
                         console.error('Error:', error);
-                        this.status = {
-                            type: 'error',
-                            message: 'An error occurred. Please try again.'
-                        };
+                        
+                        // Check if it's a 429 (rate limit) error
+                        if (error.status === 429 || error.message.includes('429')) {
+                            this.status = {
+                                type: 'error',
+                                message: 'I\'m currently experiencing high volume. I\'m busy at the moment! Please email me at TOBSolutionsLLC@gmail.com or try again in early next month.'
+                            };
+                        } else {
+                            this.status = {
+                                type: 'error',
+                                message: 'An error occurred. Please try again.'
+                            };
+                        }
                     } finally {
                         this.loading = false;
                     }
