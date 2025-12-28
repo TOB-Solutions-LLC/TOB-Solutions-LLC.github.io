@@ -3,103 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TOB Solutions LLC - Consulting and implementation services in Computer Science, AI engineering, project management, and culinary innovation.">
-    <title>TOB Solutions LLC | Consulting & Implementation</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Trenton O'Bannon | TOB Solutions LLC - Strategic consulting in AI, computer science, project management, and operational excellence.">
+    <meta name="theme-color" content="#003366">
+    <title>Trenton O'Bannon | TOB Solutions LLC | Strategic Consulting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#003366',
+                        'brand-charcoal': '#36454F',
+                        'brand-gold': '#FFC900',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .prose p {
+            line-height: 1.8;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-white text-gray-900">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1 class="logo">TOB Solutions LLC</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <header class="sticky top-0 z-40 bg-black border-b border-gray-200 shadow-sm">
+        <nav class="section-container flex items-center justify-between py-4">
+            <a href="#home" class="flex items-center gap-2">
+                <span class="font-display text-2xl font-bold text-brand-gold">TOB</span>
+                <span class="hidden sm:inline font-body text-base font-semibold text-white">Solutions</span>
+            </a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2 class="hero-title">Tailored Solutions for Your Success</h2>
-                <p class="hero-subtitle">Consulting and implementation services in Computer Science, AI engineering, project management, and culinary innovation</p>
-                <button class="cta-button">Get Started</button>
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="#about" class="text-white font-medium hover:text-brand-gold transition-colors">About</a>
+                <a href="#expertise" class="text-white font-medium hover:text-brand-gold transition-colors">Expertise</a>
+                <a href="#services" class="text-white font-medium hover:text-brand-gold transition-colors">Services</a>
+                <a href="#contact" class="bg-brand-gold text-black font-semibold px-6 py-2 rounded-lg hover:bg-yellow-400 transition-colors">Contact</a>
             </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3>Computer Science</h3>
-                    <p>Expert guidance on software development, algorithms, and system architecture tailored to your technical needs.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Engineering</h3>
-                    <p>Cutting-edge artificial intelligence solutions, from machine learning models to intelligent automation systems.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Project Management</h3>
-                    <p>Strategic planning and execution of complex projects with proven methodologies and team mobilization.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🍳</div>
-                    <h3>Culinary Innovation</h3>
-                    <p>Creative solutions for food service operations, recipe development, and culinary enterprise strategy.</p>
+            <button class="md:hidden p-2 text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-b from-brand-dark to-brand-charcoal text-white py-24 lg:py-32">
+            <div class="section-container animate-fadeInUp">
+                <h1 class="font-display text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    Strategic Consulting for Technology, Operations & Growth
+                </h1>
+                <p class="text-lg text-gray-100 mb-2 max-w-2xl leading-relaxed">
+                    Trenton O'Bannon brings deep expertise across computer science, artificial intelligence, project management, and operational excellence.
+                </p>
+                <p class="text-lg text-gray-100 mb-8 max-w-2xl leading-relaxed">
+                    As founder and principal consultant at TOB Solutions LLC, I partner with organizations to architect scalable systems, implement AI solutions, lead transformations, and drive sustainable growth.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-block bg-brand-gold text-black font-semibold px-8 py-4 rounded-lg hover:bg-yellow-400 transition-colors text-center">
+                        Schedule a Consultation
+                    </a>
+                    <a href="#expertise" class="inline-block border-2 border-gray-100 text-gray-100 font-semibold px-8 py-4 rounded-lg hover:border-brand-gold hover:text-brand-gold transition-colors text-center">
+                        View My Expertise
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-content">
-                <p>TOB Solutions LLC combines technical expertise with strategic thinking to deliver exceptional results. Our team brings deep knowledge across multiple domains, enabling us to provide comprehensive solutions that address both immediate challenges and long-term growth opportunities.</p>
-                <p>We pride ourselves on understanding your unique business context and delivering tailored recommendations backed by proven implementation strategies.</p>
+        <!-- About Section -->
+        <section id="about" class="py-20 lg:py-28 bg-white">
+            <div class="section-container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-display text-4xl font-bold text-brand-dark mb-6">About Trenton O'Bannon</h2>
+                        <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                            <p>
+                                I'm the founder and principal consultant at TOB Solutions LLC. With a background in computer science and a passion for solving complex business problems, I've spent years helping organizations navigate digital transformation, implement intelligent systems, and build high-performing teams.
+                            </p>
+                            <p>
+                                My approach combines deep technical knowledge with strategic business acumen. Whether architecting cloud infrastructure, leading AI initiatives, managing large-scale projects, or optimizing operations, I focus on delivering tangible impact and sustainable solutions.
+                            </p>
+                            <p>
+                                Beyond technology, I bring expertise in culinary operations and innovation—understanding that excellence across all business functions drives competitive advantage.
+                            </p>
+                            <p>
+                                I work best with leaders who value excellence, embrace innovation, and are committed to long-term growth. My engagement style is collaborative, transparent, and results-oriented.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-8 border-l-4 border-brand-gold">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-6">Core Competencies</h3>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3">
+                                <span class="text-brand-gold font-bold text-lg">→</span>
+                                <div>
+                                    <h4 class="font-semibold text-brand-charcoal">Systems Architecture</h4>
+                                    <p class="text-sm text-gray-600">Cloud infrastructure, scalability, performance optimization</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-brand-gold font-bold text-lg">→</span>
+                                <div>
+                                    <h4 class="font-semibold text-brand-charcoal">AI & Machine Learning</h4>
+                                    <p class="text-sm text-gray-600">LLMs, automation, NLP, computer vision, strategy</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-brand-gold font-bold text-lg">→</span>
+                                <div>
+                                    <h4 class="font-semibold text-brand-charcoal">Project Leadership</h4>
+                                    <p class="text-sm text-gray-600">Agile, Waterfall, risk management, team mobilization</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-brand-gold font-bold text-lg">→</span>
+                                <div>
+                                    <h4 class="font-semibold text-brand-charcoal">Operations Excellence</h4>
+                                    <p class="text-sm text-gray-600">Process optimization, culinary innovation, scaling</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-brand-gold font-bold text-lg">→</span>
+                                <div>
+                                    <h4 class="font-semibold text-brand-charcoal">Strategic Advising</h4>
+                                    <p class="text-sm text-gray-600">Technology strategy, digital transformation, roadmaps</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-content">
-                <p>Ready to transform your business? Reach out to us today.</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="cta-button">Send Message</button>
+        <!-- Expertise Section -->
+        <section id="expertise" class="py-20 lg:py-28 bg-gray-50">
+            <div class="section-container">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">Areas of Expertise</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Deep expertise across four strategic domains, with proven ability to deliver results in complex, high-stakes environments.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Computer Science -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-4">Computer Science & Software Engineering</h3>
+                        <p class="text-gray-700 mb-4">
+                            Architect scalable, high-performance systems from concept to deployment. Expertise in system design, cloud infrastructure, databases, and modern development practices.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> System architecture and design</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Cloud infrastructure (AWS, GCP, Azure)</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Database design and optimization</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> DevOps and CI/CD pipelines</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Code quality and technical debt management</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Full-stack development oversight</li>
+                        </ul>
+                    </div>
+
+                    <!-- AI Engineering -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-4">AI Engineering & Innovation</h3>
+                        <p class="text-gray-700 mb-4">
+                            Design and implement AI solutions that drive competitive advantage. From strategy to deployment, guide organizations through intelligent automation and machine learning.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> LLM implementation and fine-tuning</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> AI strategy and roadmap development</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Machine learning model development</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Natural language processing (NLP)</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Computer vision applications</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Workflow automation and integration</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project Management -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-4">Project Management & Leadership</h3>
+                        <p class="text-gray-700 mb-4">
+                            Lead complex initiatives from planning through execution. Mobilize teams, manage risk, and deliver results on time and on budget.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Agile and Scrum methodology</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Waterfall project management</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Risk assessment and mitigation</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Stakeholder management</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Team building and leadership</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Budget and resource planning</li>
+                        </ul>
+                    </div>
+
+                    <!-- Operations & Culinary -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-4">Operations & Culinary Innovation</h3>
+                        <p class="text-gray-700 mb-4">
+                            Optimize operations and drive innovation across food service and hospitality. Combine business excellence with culinary expertise for competitive advantage.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Operations optimization and scaling</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Culinary R&D and menu engineering</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Food service strategy</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Supply chain optimization</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Brand development and positioning</li>
+                            <li class="flex gap-2"><span class="text-brand-gold">•</span> Cost control and profitability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 lg:py-28 bg-white">
+            <div class="section-container">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">How I Work With Clients</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Customized engagement models tailored to your specific needs and timeline.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 rounded-lg p-8">
+                        <h3 class="font-display text-xl font-bold text-brand-dark mb-4">Strategic Advisory</h3>
+                        <p class="text-gray-700 mb-4">
+                            Executive-level guidance on technology roadmaps, digital transformation, AI strategy, and competitive positioning. Monthly or quarterly engagement.
+                        </p>
+                        <a href="#contact" class="text-brand-gold font-semibold hover:text-brand-dark transition-colors">Learn more →</a>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-8">
+                        <h3 class="font-display text-xl font-bold text-brand-dark mb-4">Project Leadership</h3>
+                        <p class="text-gray-700 mb-4">
+                            Full project ownership or co-leadership. Direct team management, execution oversight, and delivery accountability for complex initiatives.
+                        </p>
+                        <a href="#contact" class="text-brand-gold font-semibold hover:text-brand-dark transition-colors">Learn more →</a>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-8">
+                        <h3 class="font-display text-xl font-bold text-brand-dark mb-4">Implementation & Training</h3>
+                        <p class="text-gray-700 mb-4">
+                            Hands-on implementation, system deployment, and team training. Build internal capability and knowledge transfer for sustained success.
+                        </p>
+                        <a href="#contact" class="text-brand-gold font-semibold hover:text-brand-dark transition-colors">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-28 bg-brand-dark text-white">
+            <div class="section-container max-w-2xl">
+                <h2 class="font-display text-4xl font-bold mb-4 text-center">Let's Work Together</h2>
+                <p class="text-lg text-gray-100 text-center mb-12">
+                    Ready to discuss how I can help you achieve your strategic goals? Schedule a consultation.
+                </p>
+
+                <form 
+                    class="space-y-6"
+                    @submit.prevent="submitForm"
+                    x-data="contactForm()"
+                >
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Full Name</label>
+                        <input 
+                            type="text"
+                            x-model="form.name"
+                            required
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="Your name"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Email</label>
+                        <input 
+                            type="email"
+                            x-model="form.email"
+                            required
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="your@email.com"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Company / Organization</label>
+                        <input 
+                            type="text"
+                            x-model="form.company"
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="Your company"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">How Can I Help?</label>
+                        <textarea 
+                            x-model="form.message"
+                            required
+                            rows="6"
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="Describe your challenge or opportunity..."
+                        ></textarea>
+                    </div>
+
+                    <div x-show="status.message" :class="status.type === 'success' ? 'bg-green-600' : 'bg-red-600'" class="p-4 rounded-lg">
+                        <p x-text="status.message"></p>
+                    </div>
+
+                    <button 
+                        type="submit"
+                        :disabled="loading"
+                        class="w-full bg-brand-gold text-brand-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-colors disabled:opacity-50"
+                    >
+                        <span x-show="!loading">Send Message</span>
+                        <span x-show="loading">Sending...</span>
+                    </button>
                 </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 TOB Solutions LLC. All rights reserved.</p>
+    <footer class="bg-black py-12 border-t-4 border-brand-gold">
+        <div class="section-container">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-display text-xl font-bold text-brand-gold mb-4">TOB Solutions LLC</h3>
+                    <p class="text-gray-400 text-sm">
+                        Strategic consulting in technology, operations, and innovation. Led by Trenton O'Bannon.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#about" class="hover:text-brand-gold transition-colors">About</a></li>
+                        <li><a href="#expertise" class="hover:text-brand-gold transition-colors">Expertise</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition-colors">Services</a></li>
+                        <li><a href="#contact" class="hover:text-brand-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contact</h4>
+                    <p class="text-gray-400 text-sm mb-2">
+                        <a href="mailto:trenton@tobsolutions.com" class="hover:text-brand-gold transition-colors">trenton@tobsolutions.com</a>
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        Available for consulting engagements worldwide.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+                <p>&copy; 2025 TOB Solutions LLC. All rights reserved.</p>
+                <p>Crafted by Trenton O'Bannon</p>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Alpine.js Contact Form Component -->
+    <script>
+        function contactForm() {
+            return {
+                form: {
+                    name: '',
+                    email: '',
+                    company: '',
+                    message: ''
+                },
+                loading: false,
+                status: {
+                    type: '',
+                    message: ''
+                },
+                
+                async submitForm() {
+                    if (!this.form.name || !this.form.email || !this.form.message) {
+                        this.status = {
+                            type: 'error',
+                            message: 'Please fill in all required fields.'
+                        };
+                        return;
+                    }
+
+                    this.loading = true;
+                    
+                    try {
+                        // Simulate submission
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        
+                        this.status = {
+                            type: 'success',
+                            message: 'Thank you! I will be in touch within 24 hours.'
+                        };
+
+                        this.form = {
+                            name: '',
+                            email: '',
+                            company: '',
+                            message: ''
+                        };
+
+                        setTimeout(() => {
+                            this.status = { type: '', message: '' };
+                        }, 5000);
+
+                    } catch (error) {
+                        this.status = {
+                            type: 'error',
+                            message: 'An error occurred. Please try again.'
+                        };
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
