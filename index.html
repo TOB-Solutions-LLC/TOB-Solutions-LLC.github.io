@@ -490,6 +490,80 @@
             </div>
         </section>
 
+        <!-- Web Design & Security Section -->
+        <section class="py-20 bg-white">
+            <div class="section-container">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                    <!-- Interactive Demo -->
+                    <div x-data="{ count: 0, color: 'blue' }" class="bg-gray-50 p-8 rounded-lg">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-4">Interactive Web Design</h3>
+                        <p class="text-gray-600 mb-6">I craft engaging, interactive experiences that keep users engaged. Try this live demo:</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex gap-2">
+                                <button @click="count++" class="flex-1 bg-brand-gold text-brand-dark px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">Increment</button>
+                                <button @click="count = 0" class="flex-1 bg-gray-300 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">Reset</button>
+                            </div>
+                            <div class="bg-brand-dark text-white p-4 rounded-lg text-center text-2xl font-bold">
+                                Count: <span x-text="count"></span>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <p class="text-sm font-semibold text-gray-700">Color Theme:</p>
+                                <div class="flex gap-2">
+                                    <button @click="color = 'blue'" :class="color === 'blue' ? 'ring-2 ring-offset-2' : ''" class="w-6 h-6 bg-blue-500 rounded-full"></button>
+                                    <button @click="color = 'gold'" :class="color === 'gold' ? 'ring-2 ring-offset-2' : ''" class="w-6 h-6 bg-yellow-500 rounded-full"></button>
+                                    <button @click="color = 'teal'" :class="color === 'teal' ? 'ring-2 ring-offset-2' : ''" class="w-6 h-6 bg-teal-500 rounded-full"></button>
+                                </div>
+                                <div :class="{
+                                    'bg-blue-100': color === 'blue',
+                                    'bg-yellow-100': color === 'gold',
+                                    'bg-teal-100': color === 'teal'
+                                }" class="p-3 rounded-lg text-sm font-semibold text-gray-800">
+                                    Theme: <span x-text="color"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security & Features -->
+                    <div>
+                        <h3 class="font-display text-3xl font-bold text-brand-dark mb-6">Secure & Modern</h3>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="text-3xl">🔒</div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-dark mb-1">HTTPS Encrypted</h4>
+                                    <p class="text-gray-600">All data transmitted securely with SSL/TLS encryption. GitHub Pages provides automatic HTTPS protection.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="text-3xl">⚡</div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-dark mb-1">Fast & Reliable</h4>
+                                    <p class="text-gray-600">Static site hosted on GitHub Pages with global CDN for lightning-fast load times everywhere.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="text-3xl">🎨</div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-dark mb-1">Responsive Design</h4>
+                                    <p class="text-gray-600">Beautiful on all devices. Mobile-first design that works seamlessly across all screen sizes.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="text-3xl">🔄</div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-dark mb-1">Interactive Features</h4>
+                                    <p class="text-gray-600">Alpine.js powers smooth interactions, dark mode toggle, and real-time form validation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Culinary Services Teaser -->
         <section class="py-20 bg-gray-100 border-t-4 border-gray-900">
             <div class="section-container text-center">
