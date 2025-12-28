@@ -1,0 +1,18 @@
+{
+  "name": "tob-solutions-website",
+  "version": "1.0.0",
+  "description": "Professional consulting website for TOB Solutions LLC",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/style.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/style.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16"
+  },
+  "dependencies": {
+    "alpinejs": "^3.13.5",
+    "htmx.org": "^1.9.10"
+  }
+}
