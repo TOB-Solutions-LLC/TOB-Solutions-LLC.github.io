@@ -342,41 +342,9 @@
 
         <!-- Contact Section -->
         <section class="py-20">
-            <div class="section-container max-w-2xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                    <!-- Contact Info -->
-                    <div>
-                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-8">Contact Information</h2>
-                        
-                        <div class="mb-8">
-                            <h3 class="font-semibold text-lg text-brand-dark mb-2">Email</h3>
-                            <a href="mailto:tobsolutionsllc@gmail.com" class="text-brand-gold hover:text-brand-dark transition">
-                                TOBSolutionsLLC@gmail.com
-                            </a>
-                        </div>
-
-                        <div class="mb-8">
-                            <h3 class="font-semibold text-lg text-brand-dark mb-2">Phone</h3>
-                            <a href="tel:+18163327763" class="text-brand-gold hover:text-brand-dark transition">
-                                (816) 332-7763
-                            </a>
-                        </div>
-
-                        <div>
-                            <h3 class="font-semibold text-lg text-brand-dark mb-2">Services</h3>
-                            <ul class="text-gray-600 space-y-2">
-                                <li>• Tech Consulting</li>
-                                <li>• AI Integration</li>
-                                <li>• Systems Architecture</li>
-                                <li>• Private Chef Services</li>
-                                <li>• Event Catering</li>
-                                <li>• Culinary Consultation</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <div x-data="contactForm()" class="bg-gray-50 p-8 rounded-lg">
+            <div class="section-container max-w-2xl mb-16">
+                <!-- Contact Form -->
+                <div x-data="contactForm()" class="bg-gray-50 p-8 rounded-lg">
                         <h2 class="font-display text-3xl font-bold text-brand-dark mb-6">Send a Message</h2>
                         
                         <form @submit.prevent="submitForm()" class="space-y-4">
@@ -459,7 +427,6 @@
                             </button>
                         </form>
                     </div>
-                </div>
             </div>
         </section>
 
