@@ -1,6 +1,5 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const twilio = require('twilio');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -16,12 +15,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD
   }
 });
-
-// Twilio client for SMS
-const twilioClient = twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-);
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
@@ -43,15 +36,6 @@ app.post('/api/contact', async (req, res) => {
         <p>${message.replace(/\n/g, '<br>')}</p>
       `
     });
-
-    // Send SMS notification if phone number is provided for YOU
-    if (process.env.TWILIO_PHONE_FROM && process.env.YOUR_PHONE) {
-      await twilioClient.messages.create({
-        body: `New contact form submission from ${name} (${email})`,
-        from: process.env.TWILIO_PHONE_FROM,
-        to: process.env.YOUR_PHONE
-      });
-    }
 
     // Send confirmation email to user
     await transporter.sendMail({
