@@ -296,7 +296,33 @@
     </style>
 </head>
 <body class="bg-white text-gray-900">
-    <div x-data="{ mobileMenuOpen: false, darkMode: localStorage.getItem('colorMode') === 'dark' ? true : (localStorage.getItem('colorMode') === 'light' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches) }" @load="document.body.classList.toggle('manual-dark', darkMode && localStorage.getItem('colorMode') === 'dark'); document.body.classList.toggle('manual-light', !darkMode && localStorage.getItem('colorMode') === 'light');" x-init="$watch('darkMode', (val) => { localStorage.setItem('colorMode', val ? 'dark' : 'light'); document.body.classList.toggle('manual-dark', val); document.body.classList.toggle('manual-light', !val); window.dispatchEvent(new CustomEvent('darkModeChanged', { detail: { darkMode: val } })); }); window.addEventListener('darkModeChanged', (e) => { darkMode = e.detail.darkMode; });">
+    <div x-data="{ mobileMenuOpen: false, darkMode: null }" x-init="
+        const stored = localStorage.getItem('colorMode');
+        if (stored === 'dark') {
+            darkMode = true;
+        } else if (stored === 'light') {
+            darkMode = false;
+        } else {
+            darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        
+        const applyMode = () => {
+            document.body.classList.toggle('manual-dark', darkMode === true);
+            document.body.classList.toggle('manual-light', darkMode === false);
+        };
+        
+        applyMode();
+        
+        $watch('darkMode', (val) => {
+            localStorage.setItem('colorMode', val ? 'dark' : 'light');
+            applyMode();
+            window.dispatchEvent(new CustomEvent('darkModeChanged', { detail: { darkMode: val } }));
+        });
+        
+        window.addEventListener('darkModeChanged', (e) => {
+            darkMode = e.detail.darkMode;
+        });
+    ">
         <!-- Navigation -->
         <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
             <div class="section-container">
