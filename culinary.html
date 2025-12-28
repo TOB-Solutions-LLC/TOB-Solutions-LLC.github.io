@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Chef & Culinary Services - Gourmet dining experiences by Trenton O'Bannon">
+    <meta name="theme-color" content="#003366">
+    <title>Culinary Services | TOB Solutions LLC</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#003366',
+                        'brand-charcoal': '#36454F',
+                        'brand-gold': '#FFC900',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .mobile-menu {
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.hidden {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .mobile-menu.open {
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <div x-data="{ mobileMenuOpen: false }">
+        <!-- Navigation -->
+        <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+            <div class="section-container">
+                <div class="flex items-center justify-between h-16">
+                    <a href="index.html" class="font-display text-2xl font-bold text-brand-dark">
+                        TOB Solutions
+                    </a>
+
+                    <div class="hidden md:flex items-center gap-8">
+                        <a href="index.html" class="text-gray-600 hover:text-brand-gold transition">Home</a>
+                        <a href="consulting.html" class="text-gray-600 hover:text-brand-gold transition">Consulting</a>
+                        <a href="culinary.html" class="text-brand-dark font-semibold hover:text-brand-gold transition">Culinary</a>
+                        <a href="about.html" class="text-gray-600 hover:text-brand-gold transition">About</a>
+                        <a href="contact.html" class="bg-brand-gold text-brand-dark px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition">Contact</a>
+                    </div>
+
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-brand-dark">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="mobile-menu" :class="mobileMenuOpen ? 'open' : 'hidden'">
+                    <div class="pb-4 flex flex-col gap-3">
+                        <a href="index.html" class="text-gray-600 hover:text-brand-gold transition">Home</a>
+                        <a href="consulting.html" class="text-gray-600 hover:text-brand-gold transition">Consulting</a>
+                        <a href="culinary.html" class="text-brand-dark font-semibold hover:text-brand-gold transition">Culinary</a>
+                        <a href="about.html" class="text-gray-600 hover:text-brand-gold transition">About</a>
+                        <a href="contact.html" class="bg-brand-gold text-brand-dark px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition text-center">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="py-16 bg-gradient-to-r from-amber-700 to-amber-900 text-white">
+            <div class="section-container">
+                <h1 class="font-display text-5xl font-bold mb-4">Personal Culinary Services</h1>
+                <p class="text-xl text-amber-100 max-w-2xl">Gourmet dining experiences crafted with precision and care.</p>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="py-20">
+            <div class="section-container">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                    <!-- Private Chef Services -->
+                    <div class="bg-amber-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">👨‍🍳</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Private Chef Services</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Personalized dining experiences in the comfort of your home. From intimate dinners to elegant gatherings, each meal is crafted to perfection.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Custom Menu Planning</li>
+                            <li>✓ Multi-Course Meal Preparation</li>
+                            <li>✓ Dietary Accommodation & Allergies</li>
+                            <li>✓ Professional Kitchen Management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Event Catering -->
+                    <div class="bg-amber-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">🍽️</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Event Catering</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Elevate your special occasions with restaurant-quality cuisine. From corporate events to intimate celebrations, we handle everything.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Full Event Catering</li>
+                            <li>✓ Menu Curation & Customization</li>
+                            <li>✓ Professional Food Service</li>
+                            <li>✓ Special Occasion Coordination</li>
+                        </ul>
+                    </div>
+
+                    <!-- Culinary Consultation -->
+                    <div class="bg-amber-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">📚</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Culinary Consultation</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Expert guidance on food, wine pairings, kitchen organization, and culinary techniques. Perfect for food enthusiasts and home cooks.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Menu Development</li>
+                            <li>✓ Wine Pairing Selection</li>
+                            <li>✓ Cooking Technique Guidance</li>
+                            <li>✓ Kitchen Optimization</li>
+                        </ul>
+                    </div>
+
+                    <!-- Cooking Classes -->
+                    <div class="bg-amber-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">🎓</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Private Cooking Classes</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Learn culinary skills in a personalized, hands-on environment. Master techniques, cuisines, and create meals you're proud to serve.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Technique Mastery</li>
+                            <li>✓ Cuisine Specialization</li>
+                            <li>✓ One-on-One Instruction</li>
+                            <li>✓ Seasonal Menu Exploration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Culinary Photos -->
+                <div class="mt-20">
+                    <h2 class="font-display text-4xl font-bold text-brand-dark text-center mb-12">A Taste of Our Work</h2>
+                    <div class="flex justify-center mb-16">
+                        <div class="flex flex-wrap justify-center gap-8">
+                            <div class="rounded-lg overflow-hidden shadow-lg h-64 w-64">
+                                <img src="food.jpg" alt="Elegantly plated pasta with fresh herbs and protein" class="w-full h-full object-cover">
+                            </div>
+                            <div class="rounded-lg overflow-hidden shadow-lg h-64 w-64">
+                                <img src="71EE4BDA-A947-4D68-A397-1C220AC8552A_1_105_c.jpeg" alt="Gourmet cake dessert display with artistic presentation" class="w-full h-full object-cover">
+                            </div>
+                            <div class="rounded-lg overflow-hidden shadow-lg h-64 w-64">
+                                <img src="8DFA7322-B844-4CA9-AB59-A6C02037AA7E_1_105_c.jpeg" alt="Culinary professionals preparing dishes in professional kitchen" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-16 bg-amber-700 text-white">
+            <div class="section-container text-center">
+                <h2 class="font-display text-4xl font-bold mb-6">Ready for a Culinary Experience?</h2>
+                <p class="text-lg text-amber-100 max-w-2xl mx-auto mb-8">
+                    Contact us today to plan your next dining event or lesson.
+                </p>
+                <a href="contact.html" class="inline-block bg-brand-gold text-brand-dark px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition">
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-brand-dark text-white py-12">
+            <div class="section-container">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-4">TOB Solutions LLC</h3>
+                        <p class="text-gray-300">Strategic technology consulting and personal culinary services.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="text-gray-300 space-y-2">
+                            <li><a href="consulting.html" class="hover:text-brand-gold transition">Consulting</a></li>
+                            <li><a href="culinary.html" class="hover:text-brand-gold transition">Culinary</a></li>
+                            <li><a href="about.html" class="hover:text-brand-gold transition">About</a></li>
+                            <li><a href="contact.html" class="hover:text-brand-gold transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Contact</h4>
+                        <p class="text-gray-300 mb-2">
+                            <a href="mailto:tobsolutionsllc@gmail.com" class="hover:text-brand-gold transition">
+                                TOBSolutionsLLC@gmail.com
+                            </a>
+                        </p>
+                        <p class="text-gray-300">
+                            <a href="tel:+18163327763" class="hover:text-brand-gold transition">
+                                (816) 332-7763
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 TOB Solutions LLC. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

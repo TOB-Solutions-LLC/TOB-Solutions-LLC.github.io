@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TOB Solutions LLC - Strategic tech consulting and personal culinary services led by Trenton O'Bannon. AI, systems architecture, operations excellence, and gourmet dining experiences.">
+    <meta name="theme-color" content="#003366">
+    <title>TOB Solutions LLC | Tech Consulting & Personal Chef Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#003366',
+                        'brand-charcoal': '#36454F',
+                        'brand-gold': '#FFC900',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .prose p {
+            line-height: 1.8;
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-menu.hidden {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .mobile-menu.open {
+            max-height: 400px;
+        }
+
+        /* Service divider */
+        .service-divider {
+            position: relative;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .service-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+        }
+
+        .service-divider-text {
+            position: relative;
+            display: inline-block;
+            background: white;
+            padding: 0 1rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-black border-b border-gray-200 shadow-sm">
+        <nav class="section-container flex items-center justify-between py-4" x-data="{ mobileMenuOpen: false }">
+            <a href="#home" class="flex items-center gap-2">
+                <span class="font-display text-2xl font-bold text-brand-gold">TOB</span>
+                <span class="hidden sm:inline font-body text-base font-semibold text-white">Solutions</span>
+            </a>
+
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="#consulting" class="text-white font-medium hover:text-brand-gold transition-colors">Consulting</a>
+                <a href="#culinary" class="text-white font-medium hover:text-brand-gold transition-colors">Culinary</a>
+                <a href="#about" class="text-white font-medium hover:text-brand-gold transition-colors">About</a>
+                <a href="#contact" class="bg-brand-gold text-black font-semibold px-6 py-2 rounded-lg hover:bg-yellow-400 transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button class="md:hidden p-2 text-white" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+
+            <!-- Mobile menu -->
+            <div class="absolute left-0 right-0 top-full bg-black md:hidden mobile-menu" :class="{ 'open': mobileMenuOpen, 'hidden': !mobileMenuOpen }">
+                <div class="section-container py-4 space-y-4">
+                    <a href="#consulting" class="block text-white hover:text-brand-gold transition-colors py-2" @click="mobileMenuOpen = false">Consulting</a>
+                    <a href="#culinary" class="block text-white hover:text-brand-gold transition-colors py-2" @click="mobileMenuOpen = false">Culinary</a>
+                    <a href="#about" class="block text-white hover:text-brand-gold transition-colors py-2" @click="mobileMenuOpen = false">About</a>
+                    <a href="#contact" class="block bg-brand-gold text-black font-semibold px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors text-center" @click="mobileMenuOpen = false">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-b from-brand-dark to-brand-charcoal text-white py-20 lg:py-28">
+            <div class="section-container animate-fadeInUp">
+                <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                    Strategic Consulting & Culinary Excellence
+                </h1>
+                <p class="text-lg text-gray-100 mb-3 max-w-2xl leading-relaxed">
+                    <strong>Trenton O'Bannon</strong> offers two distinct expertise areas: cutting-edge tech consulting and transformative personal culinary services.
+                </p>
+                <p class="text-lg text-gray-100 mb-8 max-w-2xl leading-relaxed">
+                    Whether you need AI strategy, systems architecture, or an unforgettable gourmet dining experience, I bring the same commitment to excellence and innovation.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#consulting" class="inline-block bg-brand-gold text-black font-semibold px-8 py-4 rounded-lg hover:bg-yellow-400 transition-colors text-center">
+                        Explore Tech Consulting
+                    </a>
+                    <a href="#culinary" class="inline-block border-2 border-gray-100 text-gray-100 font-semibold px-8 py-4 rounded-lg hover:border-brand-gold hover:text-brand-gold transition-colors text-center">
+                        Discover Culinary Services
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 lg:py-28 bg-white">
+            <div class="section-container">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Founder headshot -->
+                    <div class="rounded-lg overflow-hidden shadow-lg">
+                        <img src="B480542C-C370-4E40-A32A-8E48B61E5FA7_4_5005_c.jpeg" alt="Trenton O'Bannon, Founder of TOB Solutions LLC" class="w-full h-auto object-contain">
+                    </div>
+
+                    <div>
+                        <h2 class="font-display text-4xl font-bold text-brand-dark mb-6">About Trenton O'Bannon</h2>
+                        <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                            <p>
+                                I'm the founder of TOB Solutions LLC, blending deep technical expertise with a passion for culinary excellence. My career spans computer science, AI engineering, and operational innovation—skills I now apply across two distinct service areas.
+                            </p>
+                            <p>
+                                <strong>On the consulting side:</strong> I help organizations architect scalable systems, implement AI solutions, lead complex transformations, and optimize operations. My approach combines technical depth with strategic business thinking.
+                            </p>
+                            <p>
+                                <strong>In the culinary realm:</strong> I craft bespoke dining experiences for individuals and small groups, combining classic techniques with modern innovation. Every meal is designed to delight and create memorable moments.
+                            </p>
+                            <p>
+                                What connects both pursuits is an obsession with excellence, attention to detail, and a commitment to understanding and exceeding what my clients need.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONSULTING SERVICES SECTION -->
+        <section id="consulting" class="py-20 lg:py-28 bg-gray-50">
+            <div class="section-container">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">Strategic Tech Consulting</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        For organizations seeking to leverage technology, data, and innovation to drive competitive advantage and sustainable growth.
+                    </p>
+                </div>
+
+                <!-- Expertise Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <!-- Systems Architecture -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">🏗️</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Systems Architecture</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Design and implement scalable, high-performance systems from concept to production. I architect solutions that grow with your business.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Cloud infrastructure (AWS, GCP, Azure)</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Database design and optimization</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> DevOps and CI/CD pipelines</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Technical debt management</li>
+                        </ul>
+                    </div>
+
+                    <!-- AI Engineering -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">🤖</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">AI & Machine Learning</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Design and deploy AI solutions that deliver competitive advantage. From strategy to implementation, I guide transformation.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> LLM implementation and fine-tuning</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> AI strategy and roadmaps</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Workflow automation</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Computer vision applications</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project Management -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">📊</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Project Leadership</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Lead complex initiatives from planning through successful delivery. I mobilize teams and manage risk to achieve results.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Agile and Scrum methodology</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Risk assessment and mitigation</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Stakeholder management</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Team building and mentorship</li>
+                        </ul>
+                    </div>
+
+                    <!-- Operations Excellence -->
+                    <div class="bg-white rounded-lg p-8 border-l-4 border-brand-gold shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">⚙️</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Operations Excellence</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Optimize processes, scale operations, and build systems that run efficiently. Operational excellence drives profitability.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Process optimization</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Scaling and automation</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Supply chain optimization</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Cost control and profitability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Consulting Engagement Models -->
+                <div class="bg-white rounded-lg p-8 border-t-4 border-brand-gold">
+                    <h3 class="font-display text-2xl font-bold text-brand-dark mb-6">How We Work Together</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-brand-dark mb-3">Strategic Advisory</h4>
+                            <p class="text-sm text-gray-600 mb-3">Executive-level guidance on technology roadmaps, AI strategy, and competitive positioning. Monthly or quarterly engagements.</p>
+                            <p class="text-xs text-gray-500">Ideal for: Startups and enterprises</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-dark mb-3">Project Leadership</h4>
+                            <p class="text-sm text-gray-600 mb-3">Full project ownership or co-leadership. Direct management, execution oversight, and delivery accountability.</p>
+                            <p class="text-xs text-gray-500">Ideal for: Complex initiatives</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-dark mb-3">Implementation & Training</h4>
+                            <p class="text-sm text-gray-600 mb-3">Hands-on implementation, deployment, and team training. Build internal capability for sustained success.</p>
+                            <p class="text-xs text-gray-500">Ideal for: Knowledge transfer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE DIVIDER -->
+        <div class="bg-white">
+            <div class="section-container">
+                <div class="service-divider">
+                    <span class="service-divider-text">Also Offered</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CULINARY SERVICES SECTION -->
+        <section id="culinary" class="py-20 lg:py-28 bg-white">
+            <div class="section-container">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">Personal Culinary Services</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        For individuals and small groups seeking restaurant-quality dining experiences crafted with precision, creativity, and care in the comfort of your space.
+                    </p>
+                </div>
+
+                <!-- Culinary Photo Placeholders -->
+                <div class="flex justify-center mb-16">
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <div class="rounded-lg overflow-hidden shadow-lg h-64 w-64">
+                            <img src="food.jpg" alt="Elegantly plated pasta with fresh herbs and protein" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-lg overflow-hidden shadow-lg h-64 w-64">
+                            <img src="71EE4BDA-A947-4D68-A397-1C220AC8552A_1_105_c.jpeg" alt="Gourmet cake dessert display with artistic presentation" class="w-full h-full object-cover">
+                        </div>
+                        <div class="rounded-lg overflow-hidden shadow-lg h-64 w-64">
+                            <img src="8DFA7322-B844-4CA9-AB59-A6C02037AA7E_1_105_c.jpeg" alt="Culinary professionals preparing dishes in professional kitchen" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Culinary Offerings -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-8 border-l-4 border-brand-gold">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">🥘</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Private Chef Dinners</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Bespoke multi-course dining experiences crafted exclusively for you. Each menu is designed around your preferences, dietary needs, and the occasion.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Custom menus tailored to your taste</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Anniversary and special celebrations</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Intimate gatherings for small groups</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Wine and food pairings</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-8 border-l-4 border-brand-gold">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">🥗</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Meal Planning & Prep</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Thoughtfully designed meal plans and prepared dishes that fit your lifestyle. Nutritious, delicious, and ready to enjoy.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Customized weekly menus</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Dietary preferences and allergies accommodated</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Healthy, convenient dining</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Meals prepared in your home</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-8 border-l-4 border-brand-gold">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">👨‍🏫</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Culinary Classes</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Learn cooking techniques and culinary skills in a personalized setting. Perfect for food enthusiasts at any level.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> One-on-one or small group lessons</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Cuisine-specific training</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Technique and skill development</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Confidence building in the kitchen</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-8 border-l-4 border-brand-gold">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="text-3xl">🎉</span>
+                            <h3 class="font-display text-2xl font-bold text-brand-dark">Event Catering</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Elevated catering for private events. From intimate gatherings to elegant affairs, I handle menu design and flawless execution.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Custom menus for your event</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Elegant presentation and service</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> End-to-end event management</li>
+                            <li class="flex gap-2"><span class="text-brand-gold font-bold">→</span> Memorable dining experiences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Culinary Philosophy -->
+                <div class="bg-gradient-to-r from-brand-dark to-brand-charcoal rounded-lg p-8 text-white">
+                    <h3 class="font-display text-2xl font-bold mb-4">My Culinary Philosophy</h3>
+                    <p class="mb-4">
+                        Every meal is an opportunity to delight the senses and create lasting memories. I combine classical training with modern innovation, emphasizing fresh, quality ingredients and meticulous technique. Whether you prefer refined French cuisine, bold international flavors, or comfort food elevated to an art form, I craft experiences that exceed expectations.
+                    </p>
+                    <p>
+                        Your preferences matter. I listen carefully to understand what you love, work with any dietary restrictions, and design menus that feel personal and authentic to you.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Testimonials Section -->
+        <section class="py-20 lg:py-28 bg-gray-50">
+            <div class="section-container">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">Client Feedback</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Real results from clients and guests across both consulting and culinary services.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Consulting testimonial placeholder -->
+                    <div class="bg-white rounded-lg p-8 shadow-md border-t-4 border-brand-gold">
+                        <div class="flex gap-1 mb-4">
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                        </div>
+                        <p class="text-gray-700 mb-4 italic">
+                            "Trenton brought clarity to our AI strategy and delivered tangible results. His technical depth combined with business thinking is rare."
+                        </p>
+                        <p class="font-semibold text-brand-dark">— Tech Startup Founder</p>
+                        <p class="text-sm text-gray-500">Consulting Client</p>
+                    </div>
+
+                    <!-- Culinary testimonial placeholder -->
+                    <div class="bg-white rounded-lg p-8 shadow-md border-t-4 border-brand-gold">
+                        <div class="flex gap-1 mb-4">
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                        </div>
+                        <p class="text-gray-700 mb-4 italic">
+                            "The dinner Trenton prepared for our anniversary was restaurant-quality and incredibly personal. An unforgettable experience."
+                        </p>
+                        <p class="font-semibold text-brand-dark">— Private Dining Client</p>
+                        <p class="text-sm text-gray-500">Culinary Client</p>
+                    </div>
+
+                    <!-- Third testimonial placeholder -->
+                    <div class="bg-white rounded-lg p-8 shadow-md border-t-4 border-brand-gold">
+                        <div class="flex gap-1 mb-4">
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                            <span class="text-brand-gold">⭐</span>
+                        </div>
+                        <p class="text-gray-700 mb-4 italic">
+                            "Professional, responsive, and committed to excellence. Whether tech or food, Trenton delivers with integrity and skill."
+                        </p>
+                        <p class="font-semibold text-brand-dark">— Small Business Owner</p>
+                        <p class="text-sm text-gray-500">Both Services Client</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-28 bg-brand-dark text-white">
+            <div class="section-container max-w-2xl">
+                <h2 class="font-display text-4xl font-bold mb-4 text-center">Let's Work Together</h2>
+                <p class="text-lg text-gray-100 text-center mb-12">
+                    Ready to explore how I can help? Whether you're looking for strategic consulting or a culinary experience, let's connect.
+                </p>
+
+                <form 
+                    id="contact-form"
+                    class="space-y-6"
+                    action="/api/contact"
+                    method="POST"
+                    @submit.prevent="submitForm"
+                    x-data="contactForm()"
+                >
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Full Name *</label>
+                        <input 
+                            type="text"
+                            name="name" 
+                            x-model="form.name"
+                            required
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="Your name"
+                            aria-label="Full Name"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Email *</label>
+                        <input 
+                            type="email"
+                            name="email"
+                            x-model="form.email"
+                            required
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="your@email.com"
+                            aria-label="Email"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Phone</label>
+                        <input 
+                            type="tel"
+                            name="phone"
+                            x-model="form.phone"
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="(Optional)"
+                            aria-label="Phone"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Interested In</label>
+                        <select 
+                            name="service"
+                            x-model="form.service"
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            aria-label="Service Type"
+                        >
+                            <option value="">Select a service...</option>
+                            <option value="consulting">Tech Consulting</option>
+                            <option value="culinary">Culinary Services</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Message *</label>
+                        <textarea 
+                            name="message" 
+                            x-model="form.message"
+                            required
+                            rows="6"
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                            placeholder="Tell me about your needs..."
+                            aria-label="Message"
+                        ></textarea>
+                    </div>
+
+                    <div x-show="status.message" :class="status.type === 'success' ? 'bg-green-600' : 'bg-red-600'" class="p-4 rounded-lg">
+                        <p x-text="status.message"></p>
+                    </div>
+
+                    <button 
+                        type="submit"
+                        :disabled="loading"
+                        class="w-full bg-brand-gold text-brand-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-colors disabled:opacity-50"
+                        aria-label="Submit form"
+                    >
+                        <span x-show="!loading">Send Message</span>
+                        <span x-show="loading">Sending...</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t-4 border-brand-gold">
+        <div class="section-container">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-display text-xl font-bold text-brand-gold mb-4">TOB Solutions LLC</h3>
+                    <p class="text-gray-400 text-sm">
+                        Strategic tech consulting and personal culinary services. Led by Trenton O'Bannon.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#consulting" class="hover:text-brand-gold transition-colors">Consulting</a></li>
+                        <li><a href="#culinary" class="hover:text-brand-gold transition-colors">Culinary</a></li>
+                        <li><a href="#about" class="hover:text-brand-gold transition-colors">About</a></li>
+                        <li><a href="#contact" class="hover:text-brand-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Get In Touch</h4>
+                    <p class="text-gray-400 text-sm mb-2">
+                        <a href="mailto:TOBSolutionsLLC@gmail.com" class="hover:text-brand-gold transition-colors">TOBSolutionsLLC@gmail.com</a>
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        Available for consulting and culinary engagements worldwide.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+                <p>&copy; 2025 TOB Solutions LLC. All rights reserved.</p>
+                <p>Crafted by Trenton O'Bannon</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js Contact Form Component -->
+    <script>
+        function contactForm() {
+            return {
+                form: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    service: '',
+                    message: ''
+                },
+                loading: false,
+                status: {
+                    type: '',
+                    message: ''
+                },
+                
+                async submitForm() {
+                    if (!this.form.name || !this.form.email || !this.form.message) {
+                        this.status = {
+                            type: 'error',
+                            message: 'Please fill in all required fields.'
+                        };
+                        return;
+                    }
+
+                    this.loading = true;
+                    
+                    try {
+                        // Send to Basin
+                        const response = await fetch('https://usebasin.com/f/f095966c110c', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.form)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+
+                        // Show success message
+                        this.status = {
+                            type: 'success',
+                            message: 'Thank you! I\'ll get back to you shortly.'
+                        };
+
+                        this.form = {
+                            name: '',
+                            email: '',
+                            phone: '',
+                            service: '',
+                            message: ''
+                        };
+
+                        setTimeout(() => {
+                            this.status = { type: '', message: '' };
+                        }, 5000);
+
+                    } catch (error) {
+                        console.error('Error:', error);
+                        
+                        // Check if it's a 429 (rate limit) error
+                        if (error.status === 429 || error.message.includes('429')) {
+                            this.status = {
+                                type: 'error',
+                                message: 'I\'m currently experiencing high volume. I\'m busy at the moment! Please email me at TOBSolutionsLLC@gmail.com or try again in early next month.'
+                            };
+                        } else {
+                            this.status = {
+                                type: 'error',
+                                message: 'An error occurred. Please try again.'
+                            };
+                        }
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TOB Solutions LLC - Strategic tech consulting led by Trenton O'Bannon. AI, systems architecture, operations excellence, and more.">
+    <meta name="description" content="Tech Consulting Services - AI Integration, Systems Architecture, Operations Excellence by Trenton O'Bannon">
     <meta name="theme-color" content="#003366">
-    <title>TOB Solutions LLC | Tech Consulting</title>
+    <title>Consulting Services | TOB Solutions LLC</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,30 +38,11 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Playfair Display', serif; }
-        
-        .animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
         .section-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
-        }
-
-        .prose p {
-            line-height: 1.8;
         }
 
         .mobile-menu {
@@ -84,21 +65,18 @@
         <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
             <div class="section-container">
                 <div class="flex items-center justify-between h-16">
-                    <!-- Logo -->
                     <a href="index.html" class="font-display text-2xl font-bold text-brand-dark">
                         TOB Solutions
                     </a>
 
-                    <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center gap-8">
-                        <a href="index.html" class="text-brand-dark font-semibold hover:text-brand-gold transition">Home</a>
-                        <a href="consulting.html" class="text-gray-600 hover:text-brand-gold transition">Consulting</a>
+                        <a href="index.html" class="text-gray-600 hover:text-brand-gold transition">Home</a>
+                        <a href="consulting.html" class="text-brand-dark font-semibold hover:text-brand-gold transition">Consulting</a>
                         <a href="culinary.html" class="text-gray-600 hover:text-brand-gold transition">Culinary</a>
                         <a href="about.html" class="text-gray-600 hover:text-brand-gold transition">About</a>
                         <a href="contact.html" class="bg-brand-gold text-brand-dark px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition">Contact</a>
                     </div>
 
-                    <!-- Mobile Menu Button -->
                     <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-brand-dark">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -106,11 +84,10 @@
                     </button>
                 </div>
 
-                <!-- Mobile Menu -->
                 <div class="mobile-menu" :class="mobileMenuOpen ? 'open' : 'hidden'">
                     <div class="pb-4 flex flex-col gap-3">
-                        <a href="index.html" class="text-brand-dark font-semibold hover:text-brand-gold transition">Home</a>
-                        <a href="consulting.html" class="text-gray-600 hover:text-brand-gold transition">Consulting</a>
+                        <a href="index.html" class="text-gray-600 hover:text-brand-gold transition">Home</a>
+                        <a href="consulting.html" class="text-brand-dark font-semibold hover:text-brand-gold transition">Consulting</a>
                         <a href="culinary.html" class="text-gray-600 hover:text-brand-gold transition">Culinary</a>
                         <a href="about.html" class="text-gray-600 hover:text-brand-gold transition">About</a>
                         <a href="contact.html" class="bg-brand-gold text-brand-dark px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition text-center">Contact</a>
@@ -119,78 +96,90 @@
             </div>
         </nav>
 
-        <!-- Hero Section -->
-        <section class="pt-20 pb-32 bg-gradient-to-br from-brand-dark via-brand-charcoal to-gray-900 text-white">
+        <!-- Hero -->
+        <section class="py-16 bg-gradient-to-r from-brand-dark to-brand-charcoal text-white">
             <div class="section-container">
-                <div class="max-w-3xl animate-fadeInUp">
-                    <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                        Strategic Technology Consulting
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
-                        Transform your business with expert guidance in AI, systems architecture, and operations excellence.
-                    </p>
-                    <a href="contact.html" class="inline-block bg-brand-gold text-brand-dark px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition">
-                        Start a Consultation
-                    </a>
-                </div>
+                <h1 class="font-display text-5xl font-bold mb-4">Consulting Services</h1>
+                <p class="text-xl text-gray-200 max-w-2xl">Expert guidance in technology, architecture, and operations.</p>
             </div>
         </section>
 
-        <!-- Consulting Highlights -->
-        <section class="py-20 bg-gray-50">
+        <!-- Services Grid -->
+        <section class="py-20">
             <div class="section-container">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                        <div class="text-4xl mb-4">🤖</div>
-                        <h3 class="font-display text-xl font-bold text-brand-dark mb-3">AI Integration</h3>
-                        <p class="text-gray-600">Implement cutting-edge AI solutions to automate and optimize your operations.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                    <!-- AI Integration -->
+                    <div class="bg-gray-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">🤖</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">AI Integration</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Leverage artificial intelligence to transform your business processes, automate workflows, and gain competitive advantages through data-driven decision making.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ AI Strategy & Roadmap Development</li>
+                            <li>✓ Machine Learning Implementation</li>
+                            <li>✓ LLM Integration & Fine-tuning</li>
+                            <li>✓ Data Pipeline Optimization</li>
+                        </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                        <div class="text-4xl mb-4">🏗️</div>
-                        <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Systems Architecture</h3>
-                        <p class="text-gray-600">Design scalable, secure systems that grow with your business needs.</p>
+
+                    <!-- Systems Architecture -->
+                    <div class="bg-gray-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">🏗️</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Systems Architecture</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Design and build scalable, secure, and maintainable systems that support your business growth and technical innovation.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Cloud Architecture Design</li>
+                            <li>✓ Microservices Implementation</li>
+                            <li>✓ Security & Compliance Framework</li>
+                            <li>✓ System Performance Optimization</li>
+                        </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                        <div class="text-4xl mb-4">⚙️</div>
-                        <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Operations Excellence</h3>
-                        <p class="text-gray-600">Optimize processes, reduce costs, and increase efficiency across teams.</p>
+
+                    <!-- Operations Excellence -->
+                    <div class="bg-gray-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Operations Excellence</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Streamline operations, reduce costs, and improve efficiency through process optimization and best practices implementation.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Process Optimization</li>
+                            <li>✓ DevOps & CI/CD Implementation</li>
+                            <li>✓ Team Workflow Enhancement</li>
+                            <li>✓ Cost Reduction Strategies</li>
+                        </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                        <div class="text-4xl mb-4">💡</div>
-                        <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Strategic Planning</h3>
-                        <p class="text-gray-600">Develop technology roadmaps aligned with your business goals.</p>
+
+                    <!-- Strategic Planning -->
+                    <div class="bg-gray-50 p-10 rounded-lg">
+                        <div class="text-5xl mb-4">💡</div>
+                        <h2 class="font-display text-3xl font-bold text-brand-dark mb-4">Strategic Planning</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Develop comprehensive technology roadmaps aligned with your business objectives and future growth aspirations.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Technology Assessment</li>
+                            <li>✓ Long-term Strategy Development</li>
+                            <li>✓ Digital Transformation Planning</li>
+                            <li>✓ Innovation Consultation</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Learn More Section -->
-        <section class="py-16">
+        <!-- CTA -->
+        <section class="py-16 bg-brand-dark text-white">
             <div class="section-container text-center">
-                <h2 class="font-display text-4xl font-bold text-brand-dark mb-8">Ready to Transform Your Business?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                    Explore our consulting services in detail or get in touch to discuss your specific needs.
+                <h2 class="font-display text-4xl font-bold mb-6">Ready to Get Started?</h2>
+                <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-8">
+                    Contact us today to discuss how we can help your business thrive.
                 </p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <a href="consulting.html" class="bg-brand-dark text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition">
-                        View Our Services
-                    </a>
-                    <a href="about.html" class="border-2 border-brand-dark text-brand-dark px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition">
-                        Learn About Trenton
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Culinary Services Teaser -->
-        <section class="py-20 bg-amber-50 border-t border-amber-100">
-            <div class="section-container text-center">
-                <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">Also Offered: Personal Culinary Services</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                    Beyond technology, Trenton also offers private chef services and culinary consultation for those seeking gourmet dining experiences.
-                </p>
-                <a href="culinary.html" class="inline-block text-brand-gold font-semibold hover:text-brand-dark transition">
-                    Explore Culinary Services →
+                <a href="contact.html" class="inline-block bg-brand-gold text-brand-dark px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition">
+                    Schedule a Consultation
                 </a>
             </div>
         </section>
