@@ -35,6 +35,9 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Configuration -->
+    <script src="config.js"></script>
+
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Playfair Display', serif; }
@@ -512,7 +515,7 @@
                     
                     try {
                         // Send to Basin
-                        const response = await fetch('https://usebasin.com/f/f095966c110c', {
+                        const response = await fetch(CONFIG.BASIN_ENDPOINT, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
