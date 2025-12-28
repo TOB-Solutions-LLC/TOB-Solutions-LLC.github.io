@@ -93,7 +93,8 @@
             padding: 8px 0;
             position: absolute;
             z-index: 1000;
-            bottom: 125%;
+            bottom: auto;
+            top: 125%;
             left: 50%;
             margin-left: -70px;
             opacity: 0;
@@ -106,12 +107,13 @@
         .tooltip .tooltiptext::after {
             content: "";
             position: absolute;
-            top: 100%;
+            bottom: 100%;
+            top: auto;
             left: 50%;
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #333 transparent transparent transparent;
+            border-color: transparent transparent #333 transparent;
         }
 
         .tooltip:hover .tooltiptext {
@@ -249,7 +251,7 @@
     </style>
 </head>
 <body class="bg-white text-gray-900">
-    <div x-data="{ mobileMenuOpen: false, darkMode: localStorage.getItem('colorMode') === 'dark' ? true : (localStorage.getItem('colorMode') === 'light' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches) }" @load="document.body.classList.toggle('manual-dark', darkMode && localStorage.getItem('colorMode') === 'dark'); document.body.classList.toggle('manual-light', !darkMode && localStorage.getItem('colorMode') === 'light');" x-init="$watch('darkMode', (val) => { localStorage.setItem('colorMode', val ? 'dark' : 'light'); document.body.classList.toggle('manual-dark', val); document.body.classList.toggle('manual-light', !val); })">
+    <div x-data="{ mobileMenuOpen: false, darkMode: localStorage.getItem('colorMode') === 'dark' ? true : (localStorage.getItem('colorMode') === 'light' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches) }" @load="document.body.classList.toggle('manual-dark', darkMode && localStorage.getItem('colorMode') === 'dark'); document.body.classList.toggle('manual-light', !darkMode && localStorage.getItem('colorMode') === 'light');" x-init="$watch('darkMode', (val) => { localStorage.setItem('colorMode', val ? 'dark' : 'light'); document.body.classList.toggle('manual-dark', val); document.body.classList.toggle('manual-light', !val); window.dispatchEvent(new CustomEvent('darkModeChanged', { detail: { darkMode: val } })); }); window.addEventListener('darkModeChanged', (e) => { darkMode = e.detail.darkMode; });">
         <!-- Navigation -->
         <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
             <div class="section-container">
