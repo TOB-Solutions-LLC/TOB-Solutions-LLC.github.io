@@ -93,6 +93,161 @@
             border-color: #d1d5db;
         }
 
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Manual dark mode override */
+        body.manual-dark {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.manual-dark nav {
+            background-color: #2a2a2a !important;
+            border-color: #444 !important;
+        }
+
+        body.manual-dark .bg-white {
+            background-color: #2a2a2a !important;
+            color: #e0e0e0;
+        }
+
+        body.manual-dark .bg-gray-50 {
+            background-color: #333 !important;
+            color: #e0e0e0;
+        }
+
+        body.manual-dark .text-gray-900 {
+            color: #e0e0e0 !important;
+        }
+
+        body.manual-dark .text-gray-600 {
+            color: #b0b0b0 !important;
+        }
+
+        body.manual-dark .text-gray-700 {
+            color: #a8a8a8 !important;
+        }
+
+        body.manual-dark .text-brand-dark {
+            color: #FFC900 !important;
+        }
+
+        body.manual-dark a.text-brand-dark:hover {
+            color: #003366 !important;
+        }
+
+        body.manual-dark .border-gray-200 {
+            border-color: #444 !important;
+        }
+
+        body.manual-dark .border-gray-300 {
+            border-color: #555 !important;
+        }
+
+        body.manual-dark .theme-toggle {
+            background-color: #444 !important;
+            border-color: #555 !important;
+        }
+
+        body.manual-dark .theme-toggle:hover {
+            background-color: #555 !important;
+            border-color: #666 !important;
+        }
+
+        /* Light mode override */
+        body.manual-light {
+            background-color: #ffffff;
+            color: #1f2937;
+        }
+
+        body.manual-light nav {
+            background-color: #ffffff !important;
+            border-color: #e5e7eb !important;
+        }
+
+        body.manual-light .bg-white {
+            background-color: #ffffff !important;
+            color: #1f2937;
+        }
+
+        body.manual-light .bg-gray-50 {
+            background-color: #f9fafb !important;
+            color: #1f2937;
+        }
+
+        body.manual-light .text-gray-900 {
+            color: #111827 !important;
+        }
+
+        body.manual-light .text-gray-600 {
+            color: #4b5563 !important;
+        }
+
+        body.manual-light .text-gray-700 {
+            color: #374151 !important;
+        }
+
+        body.manual-light .text-brand-dark {
+            color: #003366 !important;
+        }
+
+        body.manual-light .border-gray-200 {
+            border-color: #e5e7eb !important;
+        }
+
+        body.manual-light .border-gray-300 {
+            border-color: #d1d5db !important;
+        }
+
+        body.manual-light .theme-toggle {
+            background-color: #f9fafb !important;
+            border-color: #e5e7eb !important;
+        }
+
+        body.manual-light .theme-toggle:hover {
+            background-color: #f3f4f6 !important;
+            border-color: #d1d5db !important;
+        }
+
         /* Dark Mode Support */
         @media (prefers-color-scheme: dark) {
             body {
@@ -160,7 +315,7 @@
     </style>
 </head>
 <body class="bg-white text-gray-900">
-    <div x-data="{ mobileMenuOpen: false, darkMode: localStorage.getItem('darkMode') === 'true' }" :class="darkMode ? 'dark' : ''" @darkModeChange.window="darkMode = $event.detail.darkMode; localStorage.setItem('darkMode', $event.detail.darkMode)">
+    <div x-data="{ mobileMenuOpen: false, darkMode: localStorage.getItem('colorMode') === 'dark' ? true : (localStorage.getItem('colorMode') === 'light' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches) }" @load="document.body.classList.toggle('manual-dark', darkMode && localStorage.getItem('colorMode') === 'dark'); document.body.classList.toggle('manual-light', !darkMode && localStorage.getItem('colorMode') === 'light');" x-init="$watch('darkMode', (val) => { localStorage.setItem('colorMode', val ? 'dark' : 'light'); document.body.classList.toggle('manual-dark', val); document.body.classList.toggle('manual-light', !val); })" @darkModeChange.window="darkMode = $event.detail.darkMode">
         <!-- Navigation -->
         <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
             <div class="section-container">
@@ -177,17 +332,21 @@
                         <a href="culinary.html" class="text-gray-600 hover:text-brand-gold transition">Culinary</a>
                         <a href="about.html" class="text-gray-600 hover:text-brand-gold transition">About</a>
                         <a href="contact.html" class="bg-brand-gold text-brand-dark px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition">Contact</a>
-                        <button @click="darkMode = !darkMode; window.dispatchEvent(new CustomEvent('darkModeChange', { detail: { darkMode: !darkMode } }))" class="theme-toggle text-xl ml-2">
+                        <button @click="darkMode = !darkMode" class="tooltip theme-toggle text-xl ml-2" title="Toggle light/dark mode">
                             <span x-show="!darkMode">🌙</span>
                             <span x-show="darkMode">☀️</span>
+                            <span class="tooltiptext" x-show="!darkMode">Switch to Dark</span>
+                            <span class="tooltiptext" x-show="darkMode">Switch to Light</span>
                         </button>
                     </div>
 
                     <!-- Mobile Menu Button & Theme Toggle -->
                     <div class="flex items-center gap-4 md:hidden">
-                        <button @click="darkMode = !darkMode; window.dispatchEvent(new CustomEvent('darkModeChange', { detail: { darkMode: !darkMode } }))" class="text-brand-dark text-xl">
+                        <button @click="darkMode = !darkMode" class="tooltip text-brand-dark text-xl" title="Toggle light/dark mode">
                             <span x-show="!darkMode">🌙</span>
                             <span x-show="darkMode">☀️</span>
+                            <span class="tooltiptext" x-show="!darkMode">Switch to Dark</span>
+                            <span class="tooltiptext" x-show="darkMode">Switch to Light</span>
                         </button>
                         <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-dark">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
