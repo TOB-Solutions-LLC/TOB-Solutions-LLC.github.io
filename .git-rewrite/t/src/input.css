@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Typography */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-base text-brand-charcoal bg-white;
+  }
+
+  h1 {
+    @apply font-display text-4xl font-bold;
+  }
+
+  h2 {
+    @apply font-display text-3xl font-bold;
+  }
+
+  h3 {
+    @apply font-display text-2xl font-semibold;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-gold;
+  }
+}
+
+/* Components */
+@layer components {
+  .nav-link {
+    @apply text-white font-medium transition-colors duration-300 hover:text-brand-gold;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-all duration-300 focus-visible:outline-offset-2 focus-visible:outline-brand-gold disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-gold text-brand-black hover:bg-yellow-400 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent border-2 border-brand-charcoal text-brand-charcoal hover:border-brand-gold hover:text-brand-gold;
+  }
+
+  .card {
+    @apply bg-white rounded-lg border border-gray-200 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .service-card {
+    @apply card p-6 lg:p-8 border-l-4 border-l-brand-gold;
+  }
+
+  .form-group {
+    @apply flex flex-col gap-2 mb-6;
+  }
+
+  .form-label {
+    @apply block text-base font-semibold text-brand-charcoal;
+  }
+
+  .form-input,
+  .form-textarea {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 text-base font-family transition-all duration-300 focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 lg:py-16;
+  }
+
+  .alert {
+    @apply rounded-lg p-4 flex items-start gap-3 text-base;
+  }
+
+  .alert-success {
+    @apply bg-green-50 text-green-900 border border-green-200;
+  }
+
+  .alert-error {
+    @apply bg-red-50 text-red-900 border border-red-200;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}

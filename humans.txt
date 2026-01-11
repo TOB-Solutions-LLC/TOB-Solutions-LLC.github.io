@@ -1,0 +1,13 @@
+/* humanstxt.org */
+
+/* TEAM */
+    Name: Trenton O'Bannon
+    Site: https://tobsolutions.com
+    Twitter: @tobsolutions
+    Location: United States
+
+/* SITE */
+    Last update: 2026-01-11
+    Standards: HTML5, CSS3
+    Components: Tailwind CSS, Alpine.js
+    Language: English

@@ -1,0 +1,39 @@
+# Allow search engines to crawl the website
+User-agent: Googlebot
+Disallow:
+Crawl-delay: 0
+
+User-agent: Bingbot
+Disallow:
+Crawl-delay: 1
+
+# Block scraping bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: spbot
+Disallow: /
+
+# Default for other bots
+User-agent: *
+Allow: /
+Disallow: /.env
+Disallow: /.git
+Disallow: /node_modules/
+Disallow: /dist/
+Crawl-delay: 1
+
+# Sitemap for search engines
+Sitemap: https://tob-solutions-llc.github.io/sitemap.xml

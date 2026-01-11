@@ -1,0 +1,27 @@
+{
+  "name": "tob-solutions-website",
+  "version": "1.0.0",
+  "description": "Professional consulting website for TOB Solutions LLC",
+  "main": "server.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/style.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/style.css",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "nodemailer": "^6.9.7",
+    "twilio": "^4.10.0",
+    "dotenv": "^16.3.1",
+    "alpinejs": "^3.13.5",
+    "htmx.org": "^1.9.10"
+  }
+}

@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact TOB Solutions LLC - Get in touch for consulting or culinary services">
+    <meta name="description" content="Contact TOB Solutions LLC - Get in touch for consulting or culinary services. Fast response to inquiries.">
+    <meta name="keywords" content="contact, inquiry, tech consulting contact, culinary services contact">
+    <meta name="author" content="Trenton O'Bannon">
     <meta name="theme-color" content="#003366">
-    <title>Contact | TOB Solutions LLC</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="googlebot" content="noindex, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tob-solutions-llc.github.io/contact.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tob-solutions-llc.github.io/contact.html">
+    <meta property="og:title" content="Contact TOB Solutions">
+    <meta property="og:description" content="Get in touch with TOB Solutions for consulting or culinary services.">
+    <meta property="og:image" content="https://tob-solutions-llc.github.io/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://tob-solutions-llc.github.io/contact.html">
+    <meta property="twitter:title" content="Contact TOB Solutions">
+    <meta property="twitter:description" content="Get in touch with TOB Solutions for consulting or culinary services">
+    
+    <title>Contact TOB Solutions LLC | Get in Touch</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +57,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Configuration -->
-    <script src="config.js"></script>
+    <script>
+        const CONFIG = {
+            BASIN_ENDPOINT: 'https://usebasin.com/f/f095966c110c'
+        };
+    </script>
 
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -413,12 +438,24 @@
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold"
                                 >
                                     <option value="">Select a service...</option>
-                                    <option value="consulting">Tech Consulting</option>
-                                    <option value="private-chef">Private Chef</option>
-                                    <option value="catering">Event Catering</option>
-                                    <option value="culinary-class">Cooking Class</option>
+                                    <option value="tech">Tech Consulting</option>
+                                    <option value="culinary">Culinary Services</option>
+                                    <option value="both">Both Services</option>
                                     <option value="other">Other</option>
                                 </select>
+                            </div>
+
+                            <!-- Honeypot field (hidden from real users) -->
+                            <div class="hidden">
+                                <label for="website">Website</label>
+                                <input 
+                                    x-model="form.website"
+                                    type="text" 
+                                    id="website"
+                                    name="website"
+                                    tabindex="-1"
+                                    autocomplete="off"
+                                >
                             </div>
 
                             <!-- Message -->
@@ -487,6 +524,13 @@
 
     <!-- Contact Form Script -->
     <script>
+        // Ensure CONFIG is defined
+        if (typeof CONFIG === 'undefined') {
+            window.CONFIG = {
+                BASIN_ENDPOINT: 'https://usebasin.com/f/f095966c110c'
+            };
+        }
+
         function contactForm() {
             return {
                 form: {
@@ -494,15 +538,26 @@
                     email: '',
                     phone: '',
                     service: '',
-                    message: ''
+                    message: '',
+                    website: ''
                 },
                 loading: false,
                 status: {
                     type: '',
                     message: ''
                 },
+                lastSubmitTime: 0,
                 
                 async submitForm() {
+                    // Honeypot validation - reject if filled
+                    if (this.form.website) {
+                        this.status = {
+                            type: 'error',
+                            message: 'Invalid submission detected.'
+                        };
+                        return;
+                    }
+
                     if (!this.form.name || !this.form.email || !this.form.message) {
                         this.status = {
                             type: 'error',
@@ -511,16 +566,41 @@
                         return;
                     }
 
+                    // Rate limiting - prevent spam submissions
+                    const now = Date.now();
+                    if (now - this.lastSubmitTime < 3000) {
+                        this.status = {
+                            type: 'error',
+                            message: 'Please wait a moment before submitting again.'
+                        };
+                        return;
+                    }
+                    this.lastSubmitTime = now;
+
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(this.form.email)) {
+                        this.status = {
+                            type: 'error',
+                            message: 'Please enter a valid email address.'
+                        };
+                        return;
+                    }
+
                     this.loading = true;
                     
                     try {
+                        // Remove honeypot field before sending
+                        const dataToSend = { ...this.form };
+                        delete dataToSend.website;
+
                         // Send to Basin
                         const response = await fetch(CONFIG.BASIN_ENDPOINT, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify(this.form)
+                            body: JSON.stringify(dataToSend)
                         });
 
                         if (!response.ok) {
@@ -538,7 +618,8 @@
                             email: '',
                             phone: '',
                             service: '',
-                            message: ''
+                            message: '',
+                            website: ''
                         };
 
                         setTimeout(() => {

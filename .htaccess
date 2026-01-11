@@ -1,0 +1,33 @@
+# Block common scraping bots and user agents
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block common scraping/crawling user agents
+    RewriteCond %{HTTP_USER_AGENT} (AhrefsBot|SemrushBot|DotBot|MJ12bot|AhrefsSiteAudit|YandexBot|bingbot|spbot) [NC]
+    RewriteRule .* - [F]
+    
+    # Block requests without a valid User-Agent
+    RewriteCond %{HTTP_USER_AGENT} ^$
+    RewriteRule .* - [F]
+    
+    # Block automated tools and scanners
+    RewriteCond %{HTTP_USER_AGENT} (curl|wget|python|java|perl|ruby|go|scala|javascript|node|php-curl) [NC]
+    RewriteRule .* - [F]
+</IfModule>
+
+# Prevent directory listing
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Restrict access to sensitive files
+<FilesMatch "\.(env|config\.js|\.git)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Set cache control headers to prevent archival
+<IfModule mod_headers.c>
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set X-Robots-Tag "noarchive, nosnippet"
+</IfModule>
